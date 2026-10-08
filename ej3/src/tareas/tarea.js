@@ -23,6 +23,9 @@ export function tarea(titulo, descripcion, estado, vencimiento, dificultad) {
     } else {
         this.dificultad = dificultad;
     }
+    const ahora = new Date();
+    this.fechacreacion=ahora;
+    this.fechaultimacreacion=ahora;
 
-    
 }
+tarea.ultimoId = 0;
