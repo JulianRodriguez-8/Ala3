@@ -5,9 +5,9 @@ export function ListaDeTareas() {
 }
 
 ListaDeTareas.prototype.agregar = function (titulo, descripcion, estado, vencimiento, dificultad) {
-    const tarea = new Tarea(titulo, descripcion, estado, vencimiento, dificultad);
-    this.tareas[this.tareas.length] = tarea;
-    return tarea;
+    const nuevaTarea = new Tarea(titulo, descripcion, estado, vencimiento, dificultad);
+    this.tareas[this.tareas.length] = nuevaTarea;
+    return nuevaTarea;
 };
 
 ListaDeTareas.prototype.buscarPorId = function (id) {
@@ -17,4 +17,20 @@ ListaDeTareas.prototype.buscarPorId = function (id) {
         }
     }
     return null;
+};
+
+ListaDeTareas.prototype.obtenerTodas = function () {
+    return this.tareas;
+};
+
+ListaDeTareas.prototype.filtrarPorEstado = function (estado) {
+    const filtradas = [];
+
+    for (let i = 0; i < this.tareas.length; i++) {
+        if (this.tareas[i].tieneEstado(estado) === true) {
+            filtradas[filtradas.length] = this.tareas[i];
+        }
+    }
+
+    return filtradas;
 };

@@ -1,11 +1,11 @@
 import readlineSync from "readline-sync";
 import { tituloValido, descripcionValida } from "../tareas/validaciones.js";
 
-export function menuAgregarTarea(listaDeTareas) {
+export function MenuAgregarTarea(listaDeTareas) {
     this.listaDeTareas = listaDeTareas;
 }
 
-menuAgregarTarea.prototype.ejecutar = function () {
+MenuAgregarTarea.prototype.ejecutar = function () {
     console.log("=== AGREGAR UNA TAREA ===");
     const titulo = readlineSync.question("Título: ");
     if (tituloValido(titulo) === false) {
@@ -14,7 +14,6 @@ menuAgregarTarea.prototype.ejecutar = function () {
     }
 
     const descripcion = readlineSync.question("Descripción (dejar vacío si no aplica): ");
-
     if (descripcionValida(descripcion) === false) {
         console.log("La descripción no puede superar los 500 caracteres.");
         return;
@@ -68,4 +67,4 @@ menuAgregarTarea.prototype.ejecutar = function () {
 
     const nuevaTarea = this.listaDeTareas.agregar(titulo, descripcion, estado, vencimientoFinal, dificultad);
     console.log("Tarea agregada con éxito. ID de la tarea: " + nuevaTarea.id);
-}
+};
