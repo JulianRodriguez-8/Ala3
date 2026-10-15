@@ -1,20 +1,12 @@
-import { ListaTareas } from "./src/tareas/listaDeTareas.js";
-import { MenuAgregarTarea } from "./src/menus/menuAgregarTarea.js";
 
-const lista = new ListaTareas();
+import { ListaDeTareas } from "./src/tareas/tareaStores.js";
+import { MenuPrincipal } from "./src/menus/menuPrincipal.js";
 
-// Prueba 1: agregar una tarea directo, sin menú
-const nuevaTarea = lista.agregar(
-    "Estudiar JavaScript",
-    "Practicar constructores y prototipos",
-    "pendiente",
-    null,
-    "facil"
-);
-nuevaTarea.mostrarDetalle();
+const listaDeTareas = new ListaDeTareas();
+const menuPrincipal = new MenuPrincipal(listaDeTareas);
 
-// Prueba 2: agregar una tarea con el menú
-const menuAgregar = new MenuAgregarTarea(lista);
-menuAgregar.ejecutar();
+let opcion;
 
-console.log(lista.tareas);
+do {
+    opcion = menuPrincipal.ejecutar();
+} while (opcion !== 0);
