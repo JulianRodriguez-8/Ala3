@@ -1,4 +1,4 @@
-import { Tarea } from "./tarea.js";
+import { Tarea } from "../tarea.js";
 
 export function ListaDeTareas() {
     this.tareas = [];

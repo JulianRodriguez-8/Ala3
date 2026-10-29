@@ -1,6 +1,6 @@
 
 import readlineSync from "readline-sync";
-import {tituloValido,descripcionValida} from "../tareas/validaciones.js";
+import {tituloValido,descripcionValida} from "./tareas/validaciones.js";
 
 export function MenuEditarTarea(tarea) {this.tarea = tarea;}
 
