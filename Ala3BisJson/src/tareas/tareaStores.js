@@ -59,6 +59,27 @@ export async function cargarTareas() {
     }
 }
 
+// Función para escribir y guardar las tareas actuales en el disco (tasks.json)
+export async function guardarTareas() {
+    try {
+        // 1. Recorremos el array limpiando el id interno(.map) para mantener la estructura original del JSON
+        const datosAGuardar = tareas.map(t => ({//uso funcion flecha
+            titulo: t.titulo,
+            descripcion: t.descripcion,
+            estado: t.estado,
+            creacion: t.creacion,
+            ultimaEdicion: t.ultimaEdicion,
+            vencimiento: t.vencimiento,
+            dificultad: t.dificultad
+        }));
+
+        // 2. Convertimos el array a texto JSON prolijo (con 2 espacios de indentación) y lo guardamos en el archivo de forma asíncrona
+        await fs.writeFile('tasks.json', JSON.stringify(datosAGuardar, null, 2), 'utf-8');
+    } catch (error) {
+        console.log("Error al guardar el archivo:", error.message);
+    }
+}
+
 //ahora es async y llama a guardarTareas
 export async function agregarTarea({ titulo, descripcion, estado, vencimiento, dificultad }) {
     const tarea = crearTarea({ titulo, descripcion, estado, vencimiento, dificultad });

@@ -1,3 +1,5 @@
+
+//controlamos null tambien
 export function tituloValido(titulo) {
     if (titulo === "" || titulo === undefined || titulo === null) {
         return false;
