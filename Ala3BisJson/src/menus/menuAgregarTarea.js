@@ -21,21 +21,21 @@ export async function menuAgregarTarea() {
     }
 
     console.log("Estado:");
-    console.log("1. Pendiente");
-    console.log("2. En curso");
-    console.log("3. Terminada");
-    console.log("4. Cancelada");
+    console.log("1. PENDING");      //cambio los nombres
+    console.log("2. IN_PROGRESS");
+    console.log("3. COMPLETED");
+    console.log("4. CANCELLED");
     const opEstado = readlineSync.questionInt("Elegí una opción (o 0 para dejar el valor por defecto): ");
 
     let estado;
     if (opEstado === 1) {
-        estado = "pendiente";
+        estado = "PENDING";
     } else if (opEstado === 2) {
-        estado = "en curso";
+        estado = "IN_PROGRESS";
     } else if (opEstado === 3) {
-        estado = "terminada";
+        estado = "COMPLETED";
     } else if (opEstado === 4) {
-        estado = "cancelada";
+        estado = "CANCELLED";
     } else {
         estado = undefined;
     }
@@ -48,16 +48,16 @@ export async function menuAgregarTarea() {
 
     let dificultad;
     if (opDificultad === 1) {
-        dificultad = "facil";
+        dificultad = 1;
     } else if (opDificultad === 2) {
-        dificultad = "media";
+        dificultad = 2;              //cambio a numero
     } else if (opDificultad === 3) {
-        dificultad = "dificil";
+        dificultad = 3;
     } else {
         dificultad = undefined;
     }
 
-    const vencimiento = readlineSync.question("Vencimiento (dejar vacío si no aplica): ");
+    const vencimiento = readlineSync.question("Vencimiento(YYYY-MM-DDTHH:MM:SS) o dejar vacío si no aplica: ");
 
     let vencimientoFinal;
     if (vencimiento === "") {
@@ -65,8 +65,8 @@ export async function menuAgregarTarea() {
     } else {
         vencimientoFinal = vencimiento;
     }
-
-    const nuevaTarea = agregarTarea({
+    //agrego await para que espere a que se guarde la tarea antes de continuar
+    const nuevaTarea = await agregarTarea({
         titulo: titulo,
         descripcion: descripcion,
         estado: estado,
