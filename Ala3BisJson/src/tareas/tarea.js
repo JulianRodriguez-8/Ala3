@@ -37,8 +37,8 @@ export function crearTarea({ titulo, descripcion, estado, vencimiento, dificulta
         estado: estadoFinal,
         vencimiento: vencimientoFinal,
         dificultad: dificultadFinal,
-        creacion: ahora, //nombre que exige el json base, que es distinto al nombre que usamos en la app. Por eso lo renombramos.
-        ultimaEdicion: ahora, //lo mismo
+        creacion: new Date().toISOString(), //nombre que exige el json base, que es distinto al nombre que usamos en la app. Por eso lo renombramos.
+        ultimaEdicion: new Date().toISOString() //lo mismo
     };
 }
 

@@ -22,20 +22,20 @@ export async function menuAgregarTarea() {
 
     console.log("Estado:");
     console.log("1. PENDING");      //cambio los nombres
-    console.log("2. IN_PROGRESS");
-    console.log("3. COMPLETED");
-    console.log("4. CANCELLED");
+    console.log("2. IN-PROGRESS");
+    console.log("3. FINISHED");
+    console.log("4. CANCELED");
     const opEstado = readlineSync.questionInt("Elegí una opción (o 0 para dejar el valor por defecto): ");
 
     let estado;
     if (opEstado === 1) {
         estado = "PENDING";
     } else if (opEstado === 2) {
-        estado = "IN_PROGRESS";
+        estado = "IN-PROGRESS";
     } else if (opEstado === 3) {
-        estado = "COMPLETED";
+        estado = "FINISHED";
     } else if (opEstado === 4) {
-        estado = "CANCELLED";
+        estado = "CANCELED";
     } else {
         estado = undefined;
     }

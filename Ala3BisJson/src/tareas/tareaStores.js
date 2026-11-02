@@ -67,8 +67,8 @@ export async function guardarTareas() {
             titulo: t.titulo,
             descripcion: t.descripcion,
             estado: t.estado,
-            creacion: t.creacion,
-            ultimaEdicion: t.ultimaEdicion,
+            creacion: t.creacion || new Date().toISOString(), //si no tiene fecha de creación, le asigna la fecha actual
+            ultimaEdicion: t.ultimaEdicion || new Date().toISOString(), //si no tiene fecha de última edición, le asigna la fecha actual
             vencimiento: t.vencimiento,
             dificultad: t.dificultad
         }));
